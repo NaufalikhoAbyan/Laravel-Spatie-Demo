@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
@@ -8,11 +9,12 @@ Route::middleware(['auth'])->group(function () {
         return inertia('IndexView');
     })->name('home');
 
-    Route::get('/about', function () {
-        return inertia('AboutView');
-    })->name('about');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::resources([
+        'employees' => EmployeeController::class
+    ]);
 });
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
