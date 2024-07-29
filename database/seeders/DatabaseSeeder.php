@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Employee;
+use App\Models\Officer;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,5 +23,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Employee::factory(5)->create();
+        Officer::factory(5)->create();
     }
 }
